@@ -1,29 +1,23 @@
 #!/bin/bash
+# Version 3.1
 (( BASH_VERSINFO[0] < 4 )) && exit 1
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/common.sh"
-
-check_environment
-check_single_instance "GenTargets"
-trap "cleanup 'GenTargets'; exit 0" SIGTERM SIGINT EXIT
-
 declare -A TId
-MaxKolTargets="${MAX_KOL_TARGETS:-50}"
-Probability=70
+MaxKolTargets=50      # Максимальное количество целей
+Probability=70        # Вероятность поражения %
 
-RangeX=13000000
-RangeY=9000000
+RangeX=13000000       # Метры
+RangeY=9000000        # Метры
 XYminusInt=10
 
-types="${TARGET_TYPES:-bsr}"
-declare -A SpeedMinArray=( ["b"]=8000 ["s"]=50 ["r"]=250 )
-declare -A SpeedPlusArray=( ["b"]=2000 ["s"]=199 ["r"]=750 )
-declare -A TtlMaxArray=( ["b"]=300 ["s"]=200 ["r"]=200 )
+types="bsr"           # типы целей
+declare -A SpeedMinArray=( ["b"]=8000 ["s"]=50 ["r"]=250 )   # Скорость М/с min, 
+declare -A SpeedPlusArray=( ["b"]=2000 ["s"]=199 ["r"]=750 ) # разница между максимумом и минимумом
+declare -A TtlMaxArray=( ["b"]=300 ["s"]=200 ["r"]=200 )     # Максимальное время жизни
 declare -A TipTargetArray=( ["b"]="Бал.блок" ["s"]="Самолет" ["r"]="К.ракета" )
 
-Sleeptime="${GEN_SLEEPTIME:-1}"
-d=0
+Sleeptime=1           # Задержка 1с
+d=0                   # Отладка
 declare -A tsign_map=( ["b"]="\033[0;31m\033[7m^\033[0m\033[0m" ["s"]="\033[0;34m\033[7m>\033[0m\033[0m"  ["r"]="\033[0;32m\033[7m-\033[0m\033[0m" )
 for ((i = 0; i < 5895; i++)); do  maps[$i]=" "; done
 TmpDir=/tmp/GenTargets
@@ -39,7 +33,7 @@ find $TDir $DDir -type f -delete &>/dev/null
 
 while :
 do
-  if [[ -z "${TId[${Nt}_id]}" ]]; then
+  if [[ -z "${TId[${Nt}_id]}" ]]; then # Генерация цели
     tip_targetid="${types:$(($RANDOM % ${#types})):1}"
     SpeedMin=${SpeedMinArray[$tip_targetid]}
     SpeedPlus=${SpeedPlusArray[$tip_targetid]}
@@ -96,8 +90,8 @@ do
       "${TId[${Nt}_type]}" "${TId[${Nt}_id]}" "$Nt" "${TId[${Nt}_koordX]}" "${TId[${Nt}_koordY]}" \
       "${TId[${Nt}_speed]}" "${TId[${Nt}_speedX]}" "${TId[${Nt}_speedY]}" \
       "${TId[${Nt}_ttl]}" |tee -a "$LogFile"
-  else
-    if [ -n "${TId[${Nt}_id]}" ] && [ -e "$DDir/${TId[${Nt}_id]}" ]; then
+  else  # Обновление цели
+    if [ -n "${TId[${Nt}_id]}" ] && [ -e "$DDir/${TId[${Nt}_id]}" ]; then # Уничтожение цели по запросу
       info=$(head -n1 $DDir/${TId[${Nt}_id]}  2>/dev/null)
       rm "$DDir/${TId[${Nt}_id]}"
       if (( RANDOM % 100 < Probability )); then
@@ -115,7 +109,7 @@ do
     fi
     (( TId[${Nt}_koordX] += TId[${Nt}_speedX] ))
     (( TId[${Nt}_koordY] += TId[${Nt}_speedY] ))
-    TId[${Nt}_ttl]=$(( TId[${Nt}_ttl] - 1 ))
+    TId[${Nt}_ttl]=$(( TId[${Nt}_ttl] - 1 ))       #Уменьшение времени жизни
     h=$(echo -n "${TId[${Nt}_id]}" | xxd -p | tr -d '\n'); r=$(echo -n $(openssl rand -base64 6) | tr -d '\n' | xxd -p | head -c 16); f=$(for ((i=0; i<${#h}; i+=2)); do echo -n "${r:$i:2}${h:$i:2}"; done)
     printf "X:%10d\tY:%10d\n" ${TId[${Nt}_koordX]} ${TId[${Nt}_koordY]} > "$TDir/$f${r:(-2)}" 2>/dev/null
     ((d==1)) && printf "%s\n" ${TId[${Nt}_id]} >> "$TDir/$f${r:(-2)}" 2>/dev/null
@@ -131,7 +125,7 @@ do
   fi
   ((Nt+=1))
   if ((Nt > MaxKolTargets)) ; then
-    Nt=1
+    Nt=1 #$MaxKolTargets
     sleep $Sleeptime
     (( clean % 10 == 0 )) && ( find $TDir -mmin +1 -type f -delete & &>/dev/null)
     if [ "$1" == "map" ] || [ "$1" == "-map" ]; then

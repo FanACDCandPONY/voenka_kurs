@@ -1,5 +1,12 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
+
+check_environment
+check_single_instance "GenTargets"
+trap "cleanup 'GenTargets'; exit 0" SIGTERM SIGINT EXIT
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/config.sh"
 
@@ -21,7 +28,6 @@ fi
 mkdir -p "$DB_DIR" "$LOG_DIR" "$MSG_DIR/to_kp" "$MSG_DIR/from_kp" "$MSG_DIR/heartbeat" "$TEMP_DIR" "$PID_DIR"
 mkdir -p /tmp/GenTargets/Targets /tmp/GenTargets/Destroy
 
-source "$SCRIPT_DIR/common.sh"
 init_database
 
 start_component() {

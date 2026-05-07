@@ -170,6 +170,54 @@ GROUP BY system_name;
 "
 echo ""
 
+
+
+echo "--- 11. Цели обнаруженные и в РЛС и в СПРО ---"
+sqlite3 -header -column "$DB_FILE" "
+SELECT target_id AS 'ID_цели',
+       target_type as 'Тип_цели',
+       timestamp AS 'Время'
+FROM journal
+WHERE event_type = 'SPRO_ALERT'
+  AND datetime(
+        strftime('%Y', 'now') || '-' ||
+        substr(timestamp, 4, 2) || '-' ||
+        substr(timestamp, 1, 2) || ' ' ||
+        substr(timestamp, 7, 8)
+      ) >= datetime('now', '-1 hour')
+    AND target_id IN (SELECT target_id FROM journal WHERE event_type = 'DETECT')
+;
+"
+echo ""
+
+
+echo "--- 12. Цели обнаруженные и в РЛС и в СПРО и УНИЧТОЖЕННЫЕ---"
+sqlite3 -header -column "$DB_FILE" "
+with t1 as (SELECT target_id AS 'ID_цели'
+
+FROM journal
+WHERE event_type = 'DETECT'
+GROUP BY target_id
+HAVING COUNT(target_type) > 1)
+
+SELECT target_id
+FROM journal 
+WHERE target_id IN (SELECT * FROM t1) AND system_name = 'SPRO_VORONEZSH'
+;
+"
+echo ""
+
+
+
+echo "--- 12. ---"
+sqlite3 -header -column "$DB_FILE" "
+select DISTINCT system_name
+from journal limit 10
+;
+"
+echo ""
+
+
 echo "========================================="
 echo "  Конец статистики"
 echo "========================================="
