@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# ЗАМЕНИЛ СТРОКУ В scan_targets и изменил функцию current_time_ms
+
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config.sh"
 
 check_environment() {
@@ -21,25 +24,74 @@ check_environment() {
     fi
 }
 
+# check_single_instance() {
+#     local name="$1"
+#     mkdir -p "$PID_DIR"
+#     local pidfile="$PID_DIR/${name}.pid"
+#     if [[ -f "$pidfile" ]]; then
+#         local old_pid
+#         old_pid=$(cat "$pidfile" 2>/dev/null)
+#         if kill -0 "$old_pid" 2>/dev/null; then
+#             echo "ОШИБКА: $name уже запущен (PID: $old_pid)" >&2
+#             exit 1
+#         fi
+#         rm -f "$pidfile"
+#     fi
+#     echo $$ > "$pidfile"
+# }
 check_single_instance() {
     local name="$1"
     mkdir -p "$PID_DIR"
+
     local pidfile="$PID_DIR/${name}.pid"
+    local lockdir="$PID_DIR/${name}.lock"
+    local old_pid
+    local my_pid="${BASHPID:-$$}"
+
+    if mkdir "$lockdir" 2>/dev/null; then
+        echo "$my_pid" > "$pidfile"
+        return 0
+    fi
+
     if [[ -f "$pidfile" ]]; then
-        local old_pid
         old_pid=$(cat "$pidfile" 2>/dev/null)
-        if kill -0 "$old_pid" 2>/dev/null; then
+
+        if [[ "$old_pid" =~ ^[0-9]+$ ]] && kill -0 "$old_pid" 2>/dev/null; then
             echo "ОШИБКА: $name уже запущен (PID: $old_pid)" >&2
             exit 1
         fi
-        rm -f "$pidfile"
     fi
-    echo $$ > "$pidfile"
+
+    rm -rf "$lockdir" "$pidfile"
+
+    if mkdir "$lockdir" 2>/dev/null; then
+        echo "$my_pid" > "$pidfile"
+        return 0
+    fi
+
+    echo "ОШИБКА: не удалось создать lock для $name" >&2
+    exit 1
 }
 
+# cleanup() {
+#     local name="$1"
+#     rm -f "$PID_DIR/${name}.pid"
+# }
 cleanup() {
     local name="$1"
-    rm -f "$PID_DIR/${name}.pid"
+    local pidfile="$PID_DIR/${name}.pid"
+    local lockdir="$PID_DIR/${name}.lock"
+    local my_pid="${BASHPID:-$$}"
+    local saved_pid
+
+    [[ -f "$pidfile" ]] || return 0
+
+    saved_pid=$(cat "$pidfile" 2>/dev/null)
+
+    if [[ "$saved_pid" == "$my_pid" ]]; then
+        rm -f "$pidfile"
+        rm -rf "$lockdir"
+    fi
 }
 
 mark_target_destroyed() {
@@ -196,6 +248,37 @@ is_in_range() {
     (( dist <= range ))
 }
 
+# is_in_sector() {
+#     local cx=$1 cy=$2 range=$3 center_angle=$4 sector_width=$5 tx=$6 ty=$7
+
+#     local dist
+#     dist=$(calc_distance "$cx" "$cy" "$tx" "$ty")
+#     if (( dist > range )); then
+#         return 1
+#     fi
+
+#     local dx=$((tx - cx))
+#     local dy=$((ty - cy))
+
+#     local angle
+#     angle=$(echo "scale=4; a = 180 / 3.14159265358979 * a($dy, $dx); if (a < 0) a += 360; a" | bc -l 2>/dev/null)
+#     angle=$(awk "BEGIN {
+#         pi = 3.14159265358979
+#         a = atan2($dy, $dx) * 180 / pi
+#         if (a < 0) a += 360
+#         printf \"%.0f\", a
+#     }")
+
+#     local half=$((sector_width / 2))
+#     local min_angle=$(( (center_angle - half + 360) % 360 ))
+#     local max_angle=$(( (center_angle + half) % 360 ))
+
+#     if (( min_angle <= max_angle )); then
+#         (( angle >= min_angle && angle <= max_angle ))
+#     else
+#         (( angle >= min_angle || angle <= max_angle ))
+#     fi
+# }
 is_in_sector() {
     local cx=$1 cy=$2 range=$3 center_angle=$4 sector_width=$5 tx=$6 ty=$7
 
@@ -205,11 +288,21 @@ is_in_sector() {
         return 1
     fi
 
+    # Сектор 360 градусов и больше означает полный круг.
+    # После проверки дальности цель считается видимой независимо от ANGLE.
+    if (( sector_width >= 360 )); then
+        return 0
+    fi
+
+    # Некорректный или нулевой сектор ничего не видит.
+    if (( sector_width <= 0 )); then
+        return 1
+    fi
+
     local dx=$((tx - cx))
     local dy=$((ty - cy))
 
     local angle
-    angle=$(echo "scale=4; a = 180 / 3.14159265358979 * a($dy, $dx); if (a < 0) a += 360; a" | bc -l 2>/dev/null)
     angle=$(awk "BEGIN {
         pi = 3.14159265358979
         a = atan2($dy, $dx) * 180 / pi
@@ -217,15 +310,20 @@ is_in_sector() {
         printf \"%.0f\", a
     }")
 
-    local half=$((sector_width / 2))
-    local min_angle=$(( (center_angle - half + 360) % 360 ))
-    local max_angle=$(( (center_angle + half) % 360 ))
+    # Нормализуем центральный угол в диапазон 0..359
+    center_angle=$(( (center_angle % 360 + 360) % 360 ))
 
-    if (( min_angle <= max_angle )); then
-        (( angle >= min_angle && angle <= max_angle ))
-    else
-        (( angle >= min_angle || angle <= max_angle ))
+    # Считаем минимальную угловую разницу между направлением на цель
+    # и центральным направлением РЛС.
+    local diff
+    diff=$(( (angle - center_angle + 540) % 360 - 180 ))
+    if (( diff < 0 )); then
+        diff=$(( -diff ))
     fi
+
+    local half=$(( sector_width / 2 ))
+
+    (( diff <= half ))
 }
 
 is_moving_toward_spro() {
@@ -293,15 +391,47 @@ decrypt_message() {
     return 0
 }
 
+archive_queue_message() {
+    local channel="$1"      # to_kp или from_kp
+    local stage="$2"        # sent или received
+    local queue_file="$3"
+    local decoded="$4"
+    local status="${5:-OK}"
+
+    local archive_dir="$MSG_DIR/archive"
+    local archive_file="$archive_dir/${channel}_${stage}.log"
+    local timestamp base line_count
+
+    mkdir -p "$archive_dir"
+
+    timestamp=$(date +"%d.%m %H:%M:%S:%3N")
+    base=$(basename "$queue_file" 2>/dev/null)
+
+    decoded="${decoded//$'\n'/ }"
+
+    printf "%s | channel=%s | stage=%s | file=%s | status=%s | decoded=%s\n" \
+        "$timestamp" "$channel" "$stage" "$base" "$status" "$decoded" >> "$archive_file"
+
+    line_count=$(wc -l < "$archive_file" 2>/dev/null || echo 0)
+    if (( line_count > MAX_LOG_LINES )); then
+        tail -n $((MAX_LOG_LINES / 2)) "$archive_file" > "${archive_file}.tmp"
+        mv "${archive_file}.tmp" "$archive_file"
+    fi
+}
+
 send_to_kp() {
     local system_name="$1"
     local message="$2"
     local timestamp
     timestamp=$(date +"%s%3N")
+
     local encrypted
     encrypted=$(encrypt_message "$message")
+
     local msg_file="$MSG_DIR/to_kp/${system_name}_${timestamp}_$$"
     echo "$encrypted" > "$msg_file"
+
+    archive_queue_message "to_kp" "sent" "$msg_file" "$message" "SENT"
 }
 
 send_from_kp() {
@@ -309,10 +439,14 @@ send_from_kp() {
     local message="$2"
     local timestamp
     timestamp=$(date +"%s%3N")
+
     local encrypted
     encrypted=$(encrypt_message "$message")
+
     local msg_file="$MSG_DIR/from_kp/${target_system}_${timestamp}_$$"
     echo "$encrypted" > "$msg_file"
+
+    archive_queue_message "from_kp" "sent" "$msg_file" "$message" "SENT"
 }
 
 send_heartbeat_response() {
@@ -378,13 +512,30 @@ get_latest_fresh_target_mtime() {
     echo "$latest_mtime"
 }
 
+# current_time_ms() {
+#     local now_ms
+#     now_ms=$(date +%s%3N 2>/dev/null)
+#     if [[ "$now_ms" =~ ^[0-9]+$ ]]; then
+#         echo "$now_ms"
+#     else
+#         echo $(( $(date +%s) * 1000 ))
+#     fi
+# }
+
 current_time_ms() {
-    local now_ms
-    now_ms=$(date +%s%3N 2>/dev/null)
-    if [[ "$now_ms" =~ ^[0-9]+$ ]]; then
-        echo "$now_ms"
+    local sec ns ms
+
+    sec=$(date +%s)
+    ns=$(date +%N 2>/dev/null)
+
+    if [[ "$ns" =~ ^[0-9]+$ ]]; then
+        ms="${ns:0:3}"
+        while ((${#ms} < 3)); do
+            ms="${ms}0"
+        done
+        echo $((10#$sec * 1000 + 10#$ms))
     else
-        echo $(( $(date +%s) * 1000 ))
+        echo $((10#$sec * 1000))
     fi
 }
 
@@ -497,7 +648,8 @@ scan_targets() {
     declare -A latest_files
     declare -A latest_times
     local current_time current_time_s scan_from scan_margin
-    current_time=$(date +%s%3N 2>/dev/null || echo $(( $(date +%s) * 1000 )))
+    #current_time=$(date +%s%3N 2>/dev/null || echo $(( $(date +%s) * 1000 )))
+    current_time=$(current_time_ms)
     current_time_s=$(date +%s)
     scan_margin="${TARGET_SCAN_MARGIN_SECONDS:-2}"
     scan_from=$(( current_time_s - TARGET_STALE_SECONDS - scan_margin ))

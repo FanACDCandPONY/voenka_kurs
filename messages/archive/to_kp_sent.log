@@ -1,0 +1,269 @@
+11.05 16:32:28:647674975 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506348636642664_193817 | status=SENT | decoded=STATUS RLS3_Voronezsh-DM ONLINE
+11.05 16:32:28:647948814 | channel=to_kp | stage=sent | file=RLS_1_Daryal-Novosib_1778506348636407538_193811 | status=SENT | decoded=STATUS RLS_1_Daryal-Novosib ONLINE
+11.05 16:32:28:648700069 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506348636439138_193814 | status=SENT | decoded=STATUS RLS2_Dnepr_Khabarovsk ONLINE
+11.05 16:32:29:595103761 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506349588008854_193814 | status=SENT | decoded=DETECT 84d514b 9688002 3393922 BB_BR 8235
+11.05 16:32:29:602461448 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506349594836655_193817 | status=SENT | decoded=DETECT 84d514b 9688002 3393922 BB_BR 8235
+11.05 16:32:29:609857988 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506349602677759_193814 | status=SENT | decoded=SPRO_ALERT 84d514b 9688002 3393922 8235
+11.05 16:32:29:618302394 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506349610420504_193817 | status=SENT | decoded=SPRO_ALERT 84d514b 9688002 3393922 8235
+11.05 16:32:29:641217108 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506349633524797_199153 | status=SENT | decoded=STATUS SPRO_VORONEZSH ONLINE AMMO:10
+11.05 16:32:29:897174626 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506349888068265_193814 | status=SENT | decoded=DETECT a7c003b 6251994 3311694 BB_BR 9728
+11.05 16:32:29:904723055 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506349895457823_193817 | status=SENT | decoded=DETECT a7c003b 6251994 3311694 BB_BR 9728
+11.05 16:32:30:268519526 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506350261236137_193814 | status=SENT | decoded=DETECT 92cd45b 4830253 7673010 BB_BR 9406
+11.05 16:32:30:285982338 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506350277855713_193814 | status=SENT | decoded=SPRO_ALERT 92cd45b 4830253 7673010 9406
+11.05 16:32:30:643736697 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778506350634722061_206305 | status=SENT | decoded=STATUS ZRDN_2_LVOV ONLINE AMMO:20
+11.05 16:32:30:643736697 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506350633840029_193817 | status=SENT | decoded=DETECT 5d8f8fb 8722835 1571130 BB_BR 9230
+11.05 16:32:30:644139140 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778506350635071974_206304 | status=SENT | decoded=STATUS ZRDN_1_DONETSK ONLINE AMMO:20
+11.05 16:32:30:645471914 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506350635950945_206306 | status=SENT | decoded=STATUS ZRDN_3_KIEV ONLINE AMMO:20
+11.05 16:32:30:663529093 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506350653992126_193817 | status=SENT | decoded=SPRO_ALERT 5d8f8fb 8722835 1571130 9230
+11.05 16:32:31:117609956 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506351107766333_193814 | status=SENT | decoded=DETECT 6013a4b 1593768 3750729 BB_BR 8862
+11.05 16:32:31:123790820 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506351113172464_193817 | status=SENT | decoded=DETECT be0ebeb 4998276 2250374 BB_BR 9591
+11.05 16:32:31:139462406 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506351128844821_193814 | status=SENT | decoded=SPRO_ALERT 6013a4b 1593768 3750729 8862
+11.05 16:32:31:658320732 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506351648236598_199153 | status=SENT | decoded=DETECT b6d44fb 3338250 2891358 BB_BR 8283
+11.05 16:32:31:681580941 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506351671881666_199153 | status=SENT | decoded=SHOT b6d44fb BB_BR AMMO:9
+11.05 16:32:31:713372281 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506351705563980_193814 | status=SENT | decoded=DETECT 756c10b 10568084 7586604 BB_BR 8150
+11.05 16:32:31:730481220 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506351721761628_193814 | status=SENT | decoded=SPRO_ALERT 756c10b 10568084 7586604 8150
+11.05 16:32:32:825807901 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506352815928412_193817 | status=SENT | decoded=DETECT c3f09fb 5800512 3120860 BB_BR 8554
+11.05 16:32:33:176103863 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506353162288547_199153 | status=SENT | decoded=MISS b6d44fb BB_BR
+11.05 16:32:33:255187599 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506353246829241_199153 | status=SENT | decoded=SHOT b6d44fb BB_BR AMMO:8
+11.05 16:32:33:542955356 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506353535542336_193817 | status=SENT | decoded=DETECT e11bbeb 10393835 3403600 BB_BR 8440
+11.05 16:32:33:558402917 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506353551015856_193817 | status=SENT | decoded=SPRO_ALERT e11bbeb 10393835 3403600 8440
+11.05 16:32:34:270908001 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506354261162691_193817 | status=SENT | decoded=DETECT f6c0b4b 6458880 2447370 BB_BR 9754
+11.05 16:32:34:291559498 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506354281034769_193817 | status=SENT | decoded=SPRO_ALERT f6c0b4b 6458880 2447370 9754
+11.05 16:32:34:305424228 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506354295012953_193814 | status=SENT | decoded=DETECT b6d44fb 3347750 2904930 BB_BR 8283
+11.05 16:32:34:327798298 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506354316861347_193814 | status=SENT | decoded=SPRO_ALERT b6d44fb 3347750 2904930 8283
+11.05 16:32:34:706140180 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506354695731501_199153 | status=SENT | decoded=MISS b6d44fb BB_BR
+11.05 16:32:34:774666594 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506354766982705_199153 | status=SENT | decoded=SHOT b6d44fb BB_BR AMMO:7
+11.05 16:32:35:135112682 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506355127730079_193814 | status=SENT | decoded=DETECT 5d8f8fb 8713670 1597260 BB_BR 9230
+11.05 16:32:35:150114518 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506355143073361_193814 | status=SENT | decoded=SPRO_ALERT 5d8f8fb 8713670 1597260 9230
+11.05 16:32:36:18771721 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_17785063568676546_193814 | status=SENT | decoded=DETECT 5891b0b 6008732 4588830 BB_BR 8729
+11.05 16:32:36:340170173 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506356331378225_199153 | status=SENT | decoded=DESTROYED b6d44fb BB_BR
+11.05 16:32:38:49179460 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850635841780306_193814 | status=SENT | decoded=DETECT 573ce2b 2849216 1642800 BB_BR 8969
+11.05 16:32:38:65247121 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850635857460657_193814 | status=SENT | decoded=SPRO_ALERT 573ce2b 2849216 1642800 8969
+11.05 16:32:43:493465884 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506363483008816_193814 | status=SENT | decoded=DETECT 8fa45bb 2675075 6702607 BB_BR 8951
+11.05 16:32:43:514561452 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506363503671591_193814 | status=SENT | decoded=SPRO_ALERT 8fa45bb 2675075 6702607 8951
+11.05 16:32:45:316310244 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506365305248144_193814 | status=SENT | decoded=DETECT 8ac20bb 10165726 4265865 BB_BR 9831
+11.05 16:32:45:339944321 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506365327770456_193814 | status=SENT | decoded=SPRO_ALERT 8ac20bb 10165726 4265865 9831
+11.05 16:32:49:300278806 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506369293002494_193814 | status=SENT | decoded=DETECT be0ebeb 5083380 2327870 BB_BR 9591
+11.05 16:33:00:454981051 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506380447378070_193814 | status=SENT | decoded=DETECT 7cc69db 7239323 3528596 BB_BR 8366
+11.05 16:33:00:471349848 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506380463526349_193814 | status=SENT | decoded=SPRO_ALERT 7cc69db 7239323 3528596 8366
+11.05 16:33:11:756786452 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506391748114403_193814 | status=SENT | decoded=DETECT 7e5c7fb 10450018 4005896 BB_BR 8713
+11.05 16:33:11:775866466 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506391766383603_193814 | status=SENT | decoded=SPRO_ALERT 7e5c7fb 10450018 4005896 8713
+11.05 16:33:21:438504069 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778506401427169320_206305 | status=SENT | decoded=DETECT 7765b7s 2416186 3309082 SAM 101
+11.05 16:33:21:467665568 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778506401456005428_206305 | status=SENT | decoded=SHOT 7765b7s SAM AMMO:19
+11.05 16:33:21:645644451 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506401634990326_193814 | status=SENT | decoded=DETECT bdbcdab 8314251 4652896 BB_BR 8007
+11.05 16:33:22:941420401 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778506402929815686_206305 | status=SENT | decoded=DESTROYED 7765b7s SAM
+11.05 16:33:56:878449352 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506436869330863_199153 | status=SENT | decoded=DETECT 51200db 3193442 2512706 BB_BR 9261
+11.05 16:33:56:901716834 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506436890827544_199153 | status=SENT | decoded=SHOT 51200db BB_BR AMMO:6
+11.05 16:33:58:543832083 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506438533105333_199153 | status=SENT | decoded=DESTROYED 51200db BB_BR
+11.05 16:33:58:984254645 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506438973832245_193814 | status=SENT | decoded=DETECT 4d52b0b 7103920 5218752 BB_BR 9774
+11.05 16:34:05:134444378 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506445125337726_193814 | status=SENT | decoded=DETECT c3f09fb 6176704 3518620 BB_BR 8554
+11.05 16:34:20:543055989 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506460535563859_193817 | status=SENT | decoded=DETECT 7e5c7fb 10042240 3879280 BB_BR 8713
+11.05 16:34:20:559251207 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506460551033611_193817 | status=SENT | decoded=SPRO_ALERT 7e5c7fb 10042240 3879280 8713
+11.05 16:34:23:972941948 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506463965201127_193814 | status=SENT | decoded=DETECT e11bbeb 10021694 3936440 BB_BR 8440
+11.05 16:34:23:988681261 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506463980591998_193814 | status=SENT | decoded=SPRO_ALERT e11bbeb 10021694 3936440 8440
+11.05 16:35:00:992846210 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506500983249018_193814 | status=SENT | decoded=DETECT f6c0b4b 6141360 3421140 BB_BR 9754
+11.05 16:35:01:16924620 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_17785065014107751_193814 | status=SENT | decoded=SPRO_ALERT f6c0b4b 6141360 3421140 9754
+11.05 16:35:26:96251899 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850652688880868_193817 | status=SENT | decoded=DETECT 573ce2b 3902456 1864800 BB_BR 8969
+11.05 16:35:45:81744665 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850654573365041_193814 | status=SENT | decoded=DETECT ad0dd2b 2252528 6549328 BB_BR 9036
+11.05 16:35:45:101858801 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850654590832662_193814 | status=SENT | decoded=SPRO_ALERT ad0dd2b 2252528 6549328 9036
+11.05 16:35:51:53947157 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850655145978804_193817 | status=SENT | decoded=DETECT 1797e9b 9059949 2245780 BB_BR 9543
+11.05 16:35:51:71824284 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850655163256668_193817 | status=SENT | decoded=SPRO_ALERT 1797e9b 9059949 2245780 9543
+11.05 16:35:58:792899696 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506558779506339_193817 | status=SENT | decoded=DETECT 0c569eb 7092360 2990440 BB_BR 8866
+11.05 16:36:05:108232523 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850656598550201_193817 | status=SENT | decoded=DETECT 5891b0b 6631154 3426885 BB_BR 8729
+11.05 16:36:16:79065621 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850657666407808_193814 | status=SENT | decoded=DETECT ce3c66b 6015712 6560056 BB_BR 9758
+11.05 16:36:16:101462423 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850657690066661_193814 | status=SENT | decoded=SPRO_ALERT ce3c66b 6015712 6560056 9758
+11.05 16:36:36:637252841 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506596629912497_193817 | status=SENT | decoded=DETECT f5a985b 8593328 1359392 BB_BR 8324
+11.05 16:36:36:652713977 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506596644899460_193817 | status=SENT | decoded=SPRO_ALERT f5a985b 8593328 1359392 8324
+11.05 16:36:45:683512012 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506605673461663_199153 | status=SENT | decoded=DETECT ab662cb 2671600 2447100 BB_BR 8638
+11.05 16:36:45:707545336 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506605697136266_199153 | status=SENT | decoded=SHOT ab662cb BB_BR AMMO:5
+11.05 16:36:47:312871952 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506607303792973_199153 | status=SENT | decoded=DESTROYED ab662cb BB_BR
+11.05 16:36:52:852135253 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506612843788010_193814 | status=SENT | decoded=DETECT ab662cb 2671860 2455735 BB_BR 8638
+11.05 16:36:52:870277059 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506612861329170_193814 | status=SENT | decoded=SPRO_ALERT ab662cb 2671860 2455735 8638
+11.05 16:37:09:109100326 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850662999952460_193817 | status=SENT | decoded=DETECT 2cae3eb 5910621 2349560 BB_BR 9963
+11.05 16:37:09:129012112 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506629119593829_193817 | status=SENT | decoded=SPRO_ALERT 2cae3eb 5910621 2349560 9963
+11.05 16:37:26:954198599 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506646945086938_193817 | status=SENT | decoded=DETECT a55562b 5761875 2335300 BB_BR 8309
+11.05 16:37:26:973240056 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506646964107146_193817 | status=SENT | decoded=SPRO_ALERT a55562b 5761875 2335300 8309
+11.05 16:38:40:253189838 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506720245223186_193814 | status=SENT | decoded=DETECT 1797e9b 8901567 3437740 BB_BR 9543
+11.05 16:38:40:269382104 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506720261162374_193814 | status=SENT | decoded=SPRO_ALERT 1797e9b 8901567 3437740 9543
+11.05 16:39:24:55775079 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850676447371460_193814 | status=SENT | decoded=DETECT 2cae3eb 5070721 2885560 BB_BR 9963
+11.05 16:39:24:74338505 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850676465349055_193814 | status=SENT | decoded=SPRO_ALERT 2cae3eb 5070721 2885560 9963
+11.05 16:39:30:106209106 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850677095390945_193814 | status=SENT | decoded=DETECT 147734b 4076289 4072112 BB_BR 9993
+11.05 16:39:30:125161851 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506770115557405_193814 | status=SENT | decoded=SPRO_ALERT 147734b 4076289 4072112 9993
+11.05 16:39:32:835116557 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506772824752303_199153 | status=SENT | decoded=DETECT 147734b 4104795 4019360 BB_BR 9993
+11.05 16:39:32:859525163 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506772849494671_199153 | status=SENT | decoded=SHOT 147734b BB_BR AMMO:4
+11.05 16:39:34:415651251 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506774404542164_199153 | status=SENT | decoded=DESTROYED 147734b BB_BR
+11.05 16:39:42:468909542 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506782460143300_193814 | status=SENT | decoded=DETECT f5a985b 7822736 2211404 BB_BR 8324
+11.05 16:39:42:490561922 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506782479359940_193814 | status=SENT | decoded=SPRO_ALERT f5a985b 7822736 2211404 8324
+11.05 16:39:45:372237345 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506785361948866_193817 | status=SENT | decoded=DETECT a32759b 7280068 3216732 BB_BR 9789
+11.05 16:39:48:605901445 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506788597847394_193814 | status=SENT | decoded=DETECT 351088b 5403557 6472858 BB_BR 8104
+11.05 16:39:48:623190932 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506788614146693_193814 | status=SENT | decoded=SPRO_ALERT 351088b 5403557 6472858 8104
+11.05 16:39:54:653371288 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506794645244555_193814 | status=SENT | decoded=DETECT ef454db 7196894 6630940 BB_BR 8276
+11.05 16:39:57:562850530 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506797552147538_193817 | status=SENT | decoded=DETECT 5ae701b 6077572 2733456 BB_BR 8310
+11.05 16:39:57:584674522 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506797574589646_193817 | status=SENT | decoded=SPRO_ALERT 5ae701b 6077572 2733456 8310
+11.05 16:40:00:850921779 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506800842234442_193814 | status=SENT | decoded=DETECT 98c501b 4667755 3984805 BB_BR 8863
+11.05 16:40:00:867412956 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506800858948142_193814 | status=SENT | decoded=SPRO_ALERT 98c501b 4667755 3984805 8863
+11.05 16:40:19:531015684 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506819522975615_193814 | status=SENT | decoded=DETECT bbbf88b 4829497 6892825 BB_BR 9966
+11.05 16:40:24:899557780 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506824889224042_206306 | status=SENT | decoded=DETECT a3000ar 2507206 2880568 KR 302
+11.05 16:40:24:926903261 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506824915729710_206306 | status=SENT | decoded=SHOT a3000ar KR AMMO:19
+11.05 16:40:25:648984425 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506825640395967_193814 | status=SENT | decoded=DETECT fc9ff1b 3493858 7371004 BB_BR 9706
+11.05 16:40:25:666912126 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506825658320721_193814 | status=SENT | decoded=SPRO_ALERT fc9ff1b 3493858 7371004 9706
+11.05 16:40:26:350845269 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506826341503497_206306 | status=SENT | decoded=MISS a3000ar KR
+11.05 16:40:26:416735084 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506826406099464_206306 | status=SENT | decoded=SHOT a3000ar KR AMMO:18
+11.05 16:40:27:789246570 | channel=to_kp | stage=sent | file=ZRDN_3_KIEV_1778506827779893533_206306 | status=SENT | decoded=DESTROYED a3000ar KR
+11.05 16:40:42:377486987 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506842369699517_193817 | status=SENT | decoded=DETECT 7bd04db 5872593 3629650 BB_BR 8455
+11.05 16:40:42:394995804 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506842385965076_193817 | status=SENT | decoded=SPRO_ALERT 7bd04db 5872593 3629650 8455
+11.05 16:40:48:577950146 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506848569952146_193817 | status=SENT | decoded=DETECT 98c501b 4749690 3685590 BB_BR 8863
+11.05 16:41:24:475871323 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506884465148067_199153 | status=SENT | decoded=DETECT 2cae3eb 4289614 3384040 BB_BR 9963
+11.05 16:41:24:502700596 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506884490554441_199153 | status=SENT | decoded=SHOT 2cae3eb BB_BR AMMO:3
+11.05 16:41:25:977952128 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778506885968024597_199153 | status=SENT | decoded=DESTROYED 2cae3eb BB_BR
+11.05 16:41:28:814685567 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506888804046952_193814 | status=SENT | decoded=DETECT a32759b 7542876 2520724 BB_BR 9789
+11.05 16:41:32:610448818 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778506892599884644_206304 | status=SENT | decoded=DETECT 015d92r 3050239 2453744 KR 963
+11.05 16:41:32:637618336 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778506892626082190_206304 | status=SENT | decoded=SHOT 015d92r KR AMMO:19
+11.05 16:41:33:537398333 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506893527813675_193817 | status=SENT | decoded=DETECT f1aa04b 6785550 2960455 BB_BR 8299
+11.05 16:41:33:558016214 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506893548066663_193817 | status=SENT | decoded=SPRO_ALERT f1aa04b 6785550 2960455 8299
+11.05 16:41:34:127279044 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778506894116612446_206304 | status=SENT | decoded=DESTROYED 015d92r KR
+11.05 16:41:41:526797975 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506901518143838_193814 | status=SENT | decoded=DETECT a52ff4b 5679300 5201468 BB_BR 9829
+11.05 16:41:47:303545600 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506907295098824_193817 | status=SENT | decoded=DETECT 5ea0f9b 5638870 2575130 BB_BR 9387
+11.05 16:41:47:321636030 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506907312618006_193817 | status=SENT | decoded=SPRO_ALERT 5ea0f9b 5638870 2575130 9387
+11.05 16:41:47:618522772 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506907608556942_193814 | status=SENT | decoded=DETECT 5ae701b 6000379 3402192 BB_BR 8310
+11.05 16:41:47:640796823 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506907629767547_193814 | status=SENT | decoded=SPRO_ALERT 5ae701b 6000379 3402192 8310
+11.05 16:41:54:494906581 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506914485993375_193814 | status=SENT | decoded=DETECT 27d664b 4724813 4768958 BB_BR 9719
+11.05 16:41:54:514293939 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778506914504808690_193814 | status=SENT | decoded=SPRO_ALERT 27d664b 4724813 4768958 9719
+11.05 16:42:00:82649976 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850692074030598_193817 | status=SENT | decoded=DETECT 1fa829b 7963785 2629214 BB_BR 9670
+11.05 16:42:00:99732946 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850692091334808_193817 | status=SENT | decoded=SPRO_ALERT 1fa829b 7963785 2629214 9670
+11.05 16:42:19:265768964 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506939256790706_193817 | status=SENT | decoded=DETECT fa6b34b 5513890 3387080 BB_BR 9661
+11.05 16:42:19:287042145 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506939275742970_193817 | status=SENT | decoded=SPRO_ALERT fa6b34b 5513890 3387080 9661
+11.05 16:42:59:803846090 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506979795191837_193817 | status=SENT | decoded=DETECT f67ac0b 6391943 3499851 BB_BR 8052
+11.05 16:42:59:824769629 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778506979815200740_193817 | status=SENT | decoded=SPRO_ALERT f67ac0b 6391943 3499851 8052
+11.05 16:43:27:142050885 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507007134224315_193817 | status=SENT | decoded=DETECT 625498b 10121096 3433336 BB_BR 9598
+11.05 16:43:27:158582821 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507007150381075_193817 | status=SENT | decoded=SPRO_ALERT 625498b 10121096 3433336 9598
+11.05 16:43:39:639241472 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507019630700673_193817 | status=SENT | decoded=DETECT 4552cab 8597240 1770032 BB_BR 8039
+11.05 16:43:39:656382813 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507019648162062_193817 | status=SENT | decoded=SPRO_ALERT 4552cab 8597240 1770032 8039
+11.05 16:44:22:961792511 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507062954146784_193814 | status=SENT | decoded=DETECT 625498b 10039260 3818285 BB_BR 9598
+11.05 16:44:22:978808865 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507062970981775_193814 | status=SENT | decoded=SPRO_ALERT 625498b 10039260 3818285 9598
+11.05 16:44:25:344402424 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507065332751449_193817 | status=SENT | decoded=DETECT 3a09b2b 10936110 1713740 BB_BR 8436
+11.05 16:44:25:364185551 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507065355352449_193817 | status=SENT | decoded=SPRO_ALERT 3a09b2b 10936110 1713740 8436
+11.05 16:44:31:608962158 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507071599123890_193817 | status=SENT | decoded=DETECT 0e2431b 5279972 3805353 BB_BR 9724
+11.05 16:44:35:539675474 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507075531333133_193814 | status=SENT | decoded=DETECT 7bd04db 5377061 4997050 BB_BR 8455
+11.05 16:44:44:187973677 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507084177994211_193817 | status=SENT | decoded=DETECT 09f67ab 7448976 3214128 BB_BR 9287
+11.05 16:44:44:211313784 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507084199654665_193817 | status=SENT | decoded=SPRO_ALERT 09f67ab 7448976 3214128 9287
+11.05 16:44:54:147139006 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507094138690794_193814 | status=SENT | decoded=DETECT 1723fdb 6836010 7532562 BB_BR 8272
+11.05 16:44:54:164129392 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507094155675196_193814 | status=SENT | decoded=SPRO_ALERT 1723fdb 6836010 7532562 8272
+11.05 16:45:19:746622273 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507119738652215_193814 | status=SENT | decoded=DETECT e057d7b 7406090 6382001 BB_BR 8642
+11.05 16:45:26:46859604 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850712639098211_193814 | status=SENT | decoded=DETECT 3a09b2b 10736895 2036930 BB_BR 8436
+11.05 16:45:26:62964569 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850712655279578_193814 | status=SENT | decoded=SPRO_ALERT 3a09b2b 10736895 2036930 8436
+11.05 16:45:32:592991438 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507132585349483_193814 | status=SENT | decoded=DETECT 0e035eb 5930472 4813952 BB_BR 9159
+11.05 16:45:38:880009389 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507138872373239_193814 | status=SENT | decoded=DETECT 0e2431b 5722572 3604003 BB_BR 9724
+11.05 16:45:58:611635229 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507158602132758_193814 | status=SENT | decoded=DETECT d66762b 9489470 4561960 BB_BR 9129
+11.05 16:45:58:630987491 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507158621279590_193814 | status=SENT | decoded=SPRO_ALERT d66762b 9489470 4561960 9129
+11.05 16:46:01:368074523 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507161358461862_193817 | status=SENT | decoded=DETECT 8c6da3b 10815864 3749878 BB_BR 9825
+11.05 16:46:01:388876236 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507161379095310_193817 | status=SENT | decoded=SPRO_ALERT 8c6da3b 10815864 3749878 9825
+11.05 16:46:04:726474408 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507164716886415_193814 | status=SENT | decoded=DETECT 52a12eb 10888845 6430263 BB_BR 9220
+11.05 16:46:04:745039608 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507164735990255_193814 | status=SENT | decoded=SPRO_ALERT 52a12eb 10888845 6430263 9220
+11.05 16:46:07:569155955 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507167561223607_193817 | status=SENT | decoded=DETECT 4c816fb 4438425 2192100 BB_BR 9981
+11.05 16:46:11:535249982 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507171526152583_193814 | status=SENT | decoded=DETECT 09f67ab 7279824 2644272 BB_BR 9287
+11.05 16:46:11:554341213 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507171545356583_193814 | status=SENT | decoded=SPRO_ALERT 09f67ab 7279824 2644272 9287
+11.05 16:46:30:504243476 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507190494249562_193814 | status=SENT | decoded=DETECT 49b567b 7112655 3960300 BB_BR 8789
+11.05 16:46:30:525546803 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507190514223372_193814 | status=SENT | decoded=SPRO_ALERT 49b567b 7112655 3960300 8789
+11.05 16:46:52:257853350 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507212248332174_193817 | status=SENT | decoded=DETECT 3ba6eab 5479097 2475724 BB_BR 8279
+11.05 16:46:52:280946773 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507212269625314_193817 | status=SENT | decoded=SPRO_ALERT 3ba6eab 5479097 2475724 8279
+11.05 16:47:37:45674849 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850725737211557_193817 | status=SENT | decoded=DETECT 59f507b 11152023 3667206 BB_BR 9408
+11.05 16:47:37:62286767 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850725753889089_193817 | status=SENT | decoded=SPRO_ALERT 59f507b 11152023 3667206 9408
+11.05 16:47:56:153293029 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507276145089942_193817 | status=SENT | decoded=DETECT 3903cab 4743996 2111678 BB_BR 9044
+11.05 16:48:13:831759264 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507293822253611_193814 | status=SENT | decoded=DETECT 27d718b 7155793 4771918 BB_BR 8632
+11.05 16:48:39:429561385 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507319421317700_199153 | status=SENT | decoded=DETECT 99509ab 2226072 3875588 BB_BR 18918
+11.05 16:48:39:451516821 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507319442571285_199153 | status=SENT | decoded=SHOT 99509ab BB_BR AMMO:2
+11.05 16:48:40:850303642 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507320839692320_206305 | status=SENT | decoded=DETECT c044c9r 2267374 3236830 KR 1525
+11.05 16:48:40:876271362 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507320866183271_206305 | status=SENT | decoded=SHOT c044c9r KR AMMO:18
+11.05 16:48:40:938697908 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507320929994197_199153 | status=SENT | decoded=DESTROYED 99509ab BB_BR
+11.05 16:48:42:436107393 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507322424558543_206305 | status=SENT | decoded=MISS c044c9r KR
+11.05 16:48:42:525893353 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507322515633421_206305 | status=SENT | decoded=SHOT c044c9r KR AMMO:17
+11.05 16:48:44:6937373 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507323997902477_206305 | status=SENT | decoded=MISS c044c9r KR
+11.05 16:48:44:87745310 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_177850732478566052_206305 | status=SENT | decoded=SHOT c044c9r KR AMMO:16
+11.05 16:48:45:564596100 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507325554855377_206305 | status=SENT | decoded=MISS c044c9r KR
+11.05 16:48:45:656804626 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507325644188764_206305 | status=SENT | decoded=SHOT c044c9r KR AMMO:15
+11.05 16:48:47:237340640 | channel=to_kp | stage=sent | file=ZRDN_2_LVOV_1778507327226928683_206305 | status=SENT | decoded=DESTROYED c044c9r KR
+11.05 16:49:07:61798188 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850734753225418_193817 | status=SENT | decoded=DETECT 349cc6b 7868932 3194432 BB_BR 9881
+11.05 16:49:07:81679042 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_177850734770842820_193817 | status=SENT | decoded=SPRO_ALERT 349cc6b 7868932 3194432 9881
+11.05 16:49:22:293774455 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507362286101321_193814 | status=SENT | decoded=DETECT 31ded5b 8185000 4879600 BB_BR 9884
+11.05 16:49:22:309313368 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507362301842378_193814 | status=SENT | decoded=SPRO_ALERT 31ded5b 8185000 4879600 9884
+11.05 16:49:40:773653931 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507380763430693_193814 | status=SENT | decoded=DETECT 8c6da3b 10089456 2333512 BB_BR 9825
+11.05 16:49:40:797182699 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507380784471180_193814 | status=SENT | decoded=SPRO_ALERT 8c6da3b 10089456 2333512 9825
+11.05 16:49:41:963797029 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507381953669242_193817 | status=SENT | decoded=DETECT 650dacb 5233232 3788789 BB_BR 8699
+11.05 16:49:41:985714433 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507381975344046_193817 | status=SENT | decoded=SPRO_ALERT 650dacb 5233232 3788789 8699
+11.05 16:49:53:723302935 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507393713896145_199153 | status=SENT | decoded=DETECT 6955ecb 3417644 4132042 BB_BR 8674
+11.05 16:49:53:746734539 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507393736731819_199153 | status=SENT | decoded=SHOT 6955ecb BB_BR AMMO:1
+11.05 16:49:53:817488081 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507393808822056_193814 | status=SENT | decoded=DETECT 39ecb5b 7607096 4228356 BB_BR 8758
+11.05 16:49:53:836521784 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507393826941119_193814 | status=SENT | decoded=SPRO_ALERT 39ecb5b 7607096 4228356 8758
+11.05 16:49:54:896681146 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507394887272642_193817 | status=SENT | decoded=DETECT 40b706b 5658028 3680956 BB_BR 9155
+11.05 16:49:55:346536004 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507395337211598_199153 | status=SENT | decoded=MISS 6955ecb BB_BR
+11.05 16:49:55:413463022 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507395402733613_199153 | status=SENT | decoded=SHOT 6955ecb BB_BR AMMO:0
+11.05 16:49:55:441526681 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507395427002064_199153 | status=SENT | decoded=AMMO_EMPTY SPRO_VORONEZSH
+11.05 16:49:55:994075338 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507395984406891_199153 | status=SENT | decoded=REFILL SPRO_VORONEZSH AMMO:10
+11.05 16:49:56:829996172 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507396819373976_199153 | status=SENT | decoded=DESTROYED 6955ecb BB_BR
+11.05 16:50:14:906654260 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507414896503649_193817 | status=SENT | decoded=DETECT 81fe54b 5023704 3591696 BB_BR 9546
+11.05 16:50:31:29453041 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_177850743120939709_193814 | status=SENT | decoded=DETECT 45dc7eb 3326849 4902615 BB_BR 8413
+11.05 16:50:37:163654122 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507437155659176_193814 | status=SENT | decoded=DETECT 2eaa51b 7780234 6038362 BB_BR 9575
+11.05 16:50:38:967688293 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507438957655336_199153 | status=SENT | decoded=DETECT c5b789b 2945126 3772362 BB_BR 8065
+11.05 16:50:38:992869964 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507438982953267_199153 | status=SENT | decoded=SHOT c5b789b BB_BR AMMO:9
+11.05 16:50:40:483617853 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507440474146060_199153 | status=SENT | decoded=MISS c5b789b BB_BR
+11.05 16:50:40:544580065 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507440536477136_199153 | status=SENT | decoded=SHOT c5b789b BB_BR AMMO:8
+11.05 16:50:41:975804449 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507441965744451_199153 | status=SENT | decoded=MISS c5b789b BB_BR
+11.05 16:50:42:48670094 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_177850744239653783_199153 | status=SENT | decoded=SHOT c5b789b BB_BR AMMO:7
+11.05 16:50:43:460517005 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507443451320577_199153 | status=SENT | decoded=DESTROYED c5b789b BB_BR
+11.05 16:51:03:202481248 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507463193846321_193814 | status=SENT | decoded=DETECT 650dacb 5207312 3267449 BB_BR 8699
+11.05 16:51:05:829617689 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507465819822422_199153 | status=SENT | decoded=DETECT deb41bb 2753356 3749340 BB_BR 8487
+11.05 16:51:05:854513708 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507465843644886_199153 | status=SENT | decoded=SHOT deb41bb BB_BR AMMO:6
+11.05 16:51:07:303348091 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507467291845027_199153 | status=SENT | decoded=DESTROYED deb41bb BB_BR
+11.05 16:51:27:519883206 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507487509799272_193814 | status=SENT | decoded=DETECT 997692b 9868465 5284147 BB_BR 9321
+11.05 16:51:42:574655047 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507502565109665_206304 | status=SENT | decoded=DETECT 7b5381r 3081464 3340590 KR 375
+11.05 16:51:42:599394811 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507502588847219_206304 | status=SENT | decoded=SHOT 7b5381r KR AMMO:18
+11.05 16:51:44:37497581 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_177850750429865566_206304 | status=SENT | decoded=DESTROYED 7b5381r KR
+11.05 16:51:47:44960154 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_177850750732628692_206304 | status=SENT | decoded=DETECT 723ed6s 3768170 3254224 SAM 140
+11.05 16:51:47:71002197 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_177850750760443052_206304 | status=SENT | decoded=SHOT 723ed6s SAM AMMO:17
+11.05 16:51:48:517078491 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507508505911895_206304 | status=SENT | decoded=MISS 723ed6s SAM
+11.05 16:51:48:582621886 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507508572635597_206304 | status=SENT | decoded=SHOT 723ed6s SAM AMMO:16
+11.05 16:51:49:992994756 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507509984136776_206304 | status=SENT | decoded=DESTROYED 723ed6s SAM
+11.05 16:51:55:499957674 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507515490110448_199153 | status=SENT | decoded=DETECT 9d1221b 3033240 4431855 BB_BR 18197
+11.05 16:51:55:528465989 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507515517475678_199153 | status=SENT | decoded=SHOT 9d1221b BB_BR AMMO:5
+11.05 16:51:56:992202185 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507516982606635_199153 | status=SENT | decoded=DESTROYED 9d1221b BB_BR
+11.05 16:51:58:649709326 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507518639797488_193817 | status=SENT | decoded=DETECT 39ecb5b 7592192 3422712 BB_BR 8758
+11.05 16:51:58:672434714 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507518661317800_193817 | status=SENT | decoded=SPRO_ALERT 39ecb5b 7592192 3422712 8758
+11.05 16:52:04:778860690 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507524770143808_193817 | status=SENT | decoded=DETECT 165ef1b 10645072 3984936 BB_BR 9491
+11.05 16:52:04:796265711 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507524787248348_193817 | status=SENT | decoded=SPRO_ALERT 165ef1b 10645072 3984936 9491
+11.05 16:52:17:378659566 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507537370348519_193817 | status=SENT | decoded=DETECT 62c922b 7235894 3359464 BB_BR 8195
+11.05 16:52:58:782770336 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507578774311433_199153 | status=SENT | decoded=DETECT e2a8bcb 3228548 3147966 BB_BR 8876
+11.05 16:52:58:804967702 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507578795197021_199153 | status=SENT | decoded=SHOT e2a8bcb BB_BR AMMO:4
+11.05 16:53:00:309412021 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507580299695875_199153 | status=SENT | decoded=DESTROYED e2a8bcb BB_BR
+11.05 16:53:19:202274144 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507599193491798_206304 | status=SENT | decoded=DETECT 23446ar 3743652 3169256 KR 707
+11.05 16:53:19:226667841 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507599217197681_206304 | status=SENT | decoded=SHOT 23446ar KR AMMO:15
+11.05 16:53:20:840727795 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507600831134642_206304 | status=SENT | decoded=DESTROYED 23446ar KR
+11.05 16:53:20:904205264 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507600895079887_193817 | status=SENT | decoded=DETECT ac6244b 10919532 2954274 BB_BR 8430
+11.05 16:53:20:922421763 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507600913034029_193817 | status=SENT | decoded=SPRO_ALERT ac6244b 10919532 2954274 8430
+11.05 16:53:34:343453386 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507614333484139_193817 | status=SENT | decoded=DETECT 7dd0a8b 4061240 2283800 BB_BR 9032
+11.05 16:53:34:366272138 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507614354753074_193817 | status=SENT | decoded=SPRO_ALERT 7dd0a8b 4061240 2283800 9032
+11.05 16:53:57:686960010 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507637676415248_193814 | status=SENT | decoded=DETECT 349cc6b 5867497 3907372 BB_BR 9881
+11.05 16:53:57:709295806 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507637698800453_193814 | status=SENT | decoded=SPRO_ALERT 349cc6b 5867497 3907372 9881
+11.05 16:54:02:988256121 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507642979947904_206304 | status=SENT | decoded=DETECT 68d194s 3618122 2984096 SAM 77
+11.05 16:54:03:10826082 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_17785076431829730_206304 | status=SENT | decoded=SHOT 68d194s SAM AMMO:14
+11.05 16:54:04:464391389 | channel=to_kp | stage=sent | file=ZRDN_1_DONETSK_1778507644455774855_206304 | status=SENT | decoded=DESTROYED 68d194s SAM
+11.05 16:54:31:172903980 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507671164670596_193814 | status=SENT | decoded=DETECT fb928cb 5899906 6319342 BB_BR 9524
+11.05 16:54:32:554640322 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507672543524022_199153 | status=SENT | decoded=DETECT 0bb97bb 2800568 4106941 BB_BR 8564
+11.05 16:54:32:577903346 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507672568142891_199153 | status=SENT | decoded=SHOT 0bb97bb BB_BR AMMO:3
+11.05 16:54:34:99428211 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_177850767487756998_199153 | status=SENT | decoded=MISS 0bb97bb BB_BR
+11.05 16:54:34:179812095 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507674168816804_199153 | status=SENT | decoded=SHOT 0bb97bb BB_BR AMMO:2
+11.05 16:54:35:760889056 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507675752135430_199153 | status=SENT | decoded=DESTROYED 0bb97bb BB_BR
+11.05 16:54:56:256529360 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507696247128801_199153 | status=SENT | decoded=DETECT 7dd0a8b 4150200 2855000 BB_BR 9032
+11.05 16:54:56:280669718 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507696270605150_199153 | status=SENT | decoded=SHOT 7dd0a8b BB_BR AMMO:1
+11.05 16:54:56:566516201 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507696559019266_193814 | status=SENT | decoded=DETECT 165ef1b 9947715 4968170 BB_BR 9491
+11.05 16:54:56:583814961 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507696574915341_193814 | status=SENT | decoded=SPRO_ALERT 165ef1b 9947715 4968170 9491
+11.05 16:54:57:776874970 | channel=to_kp | stage=sent | file=SPRO_VORONEZSH_1778507697768063328_199153 | status=SENT | decoded=DESTROYED 7dd0a8b BB_BR
+11.05 16:54:58:914151943 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507698904745361_193817 | status=SENT | decoded=DETECT 66393fb 4161838 2037074 BB_BR 8182
+11.05 16:54:58:939264385 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507698927737687_193817 | status=SENT | decoded=SPRO_ALERT 66393fb 4161838 2037074 8182
+11.05 16:55:04:867128939 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507704859149955_193817 | status=SENT | decoded=DETECT fdee70b 4658216 1892948 BB_BR 8239
+11.05 16:55:12:867754012 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507712857737196_193817 | status=SENT | decoded=DETECT 1301e7b 6234552 1628312 BB_BR 9374
+11.05 16:55:12:888577612 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507712878793537_193817 | status=SENT | decoded=SPRO_ALERT 1301e7b 6234552 1628312 9374
+11.05 16:55:25:161283941 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507725151754940_193817 | status=SENT | decoded=DETECT 2ed50ab 4949510 2307580 BB_BR 8070
+11.05 16:55:25:180700524 | channel=to_kp | stage=sent | file=RLS3_Voronezsh-DM_1778507725170492305_193817 | status=SENT | decoded=SPRO_ALERT 2ed50ab 4949510 2307580 8070
+11.05 16:55:40:922214374 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507740913465621_193814 | status=SENT | decoded=DETECT f73d05b 3985548 5074125 BB_BR 9351
+11.05 16:55:40:940376329 | channel=to_kp | stage=sent | file=RLS2_Dnepr_Khabarovsk_1778507740931305666_193814 | status=SENT | decoded=SPRO_ALERT f73d05b 3985548 5074125 9351

@@ -2,6 +2,14 @@
 # Version 3.1
 (( BASH_VERSINFO[0] < 4 )) && exit 1
 
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
+
+check_environment
+check_single_instance "GenTargets"
+trap "cleanup 'GenTargets'; exit 0" SIGTERM SIGINT EXIT
+
 declare -A TId
 MaxKolTargets=50      # Максимальное количество целей
 Probability=70        # Вероятность поражения %

@@ -18,8 +18,13 @@ eval "ZRDN_Y=\$ZRDN${ZRDN_NUM}_Y"
 eval "ZRDN_RANGE=\$ZRDN${ZRDN_NUM}_RANGE"
 eval "ZRDN_MAX_AMMO=\$ZRDN${ZRDN_NUM}_AMMO"
 
-check_single_instance "$ZRDN_NAME"
-trap "cleanup '$ZRDN_NAME'; exit 0" SIGTERM SIGINT EXIT
+INSTANCE_NAME="ZRDN${ZRDN_NUM}"
+
+check_single_instance "$INSTANCE_NAME"
+trap "cleanup '$INSTANCE_NAME'; exit 0" SIGTERM SIGINT EXIT
+
+# check_single_instance "$ZRDN_NAME"
+# trap "cleanup '$ZRDN_NAME'; exit 0" SIGTERM SIGINT EXIT
 
 LOGFILE="$LOG_DIR/${ZRDN_NAME}.log"
 AMMO=$ZRDN_MAX_AMMO
@@ -148,6 +153,13 @@ while true; do
         [[ -f "$msg_file" ]] || continue
         encrypted=$(cat "$msg_file" 2>/dev/null)
         decoded=$(decrypt_message "$encrypted")
+
+        if [[ "$decoded" == "ERROR_HMAC" || "$decoded" == "ERROR_DECRYPT" ]]; then
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "$decoded"
+        else
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "OK"
+        fi
+
         if [[ "$decoded" == "ERROR_HMAC" ]]; then
             log_message "$LOGFILE" "$ZRDN_NAME" "ПОПЫТКА НСД! Поддельное сообщение"
             send_to_kp "$ZRDN_NAME" "NSD $ZRDN_NAME Обнаружена попытка подмены сообщения"
@@ -177,7 +189,6 @@ while true; do
         [[ -n "$target_id" ]] || continue
         is_target_destroyed "$target_id" && continue
         present_now[$target_id]=1
-            present_now[$target_id]=1
         last_seen_epoch[$target_id]="$now_epoch"
         last_x[$target_id]="$tx"
         last_y[$target_id]="$ty"

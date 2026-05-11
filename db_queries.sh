@@ -191,32 +191,159 @@ WHERE event_type = 'SPRO_ALERT'
 echo ""
 
 
-echo "--- 12. Цели обнаруженные и в РЛС и в СПРО и УНИЧТОЖЕННЫЕ---"
+echo "--- 12. Цели, обнаруженные РЛС и СПРО ---"
 sqlite3 -header -column "$DB_FILE" "
-with t1 as (SELECT target_id AS 'ID_цели'
-
-FROM journal
-WHERE event_type = 'DETECT'
-GROUP BY target_id
-HAVING COUNT(target_type) > 1)
-
-SELECT target_id
-FROM journal 
-WHERE target_id IN (SELECT * FROM t1) AND system_name = 'SPRO_VORONEZSH'
-;
+WITH
+first_rls_detect AS (
+    SELECT target_id,
+           MIN(id) AS rls_detect_id
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name LIKE 'RLS%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+rls_systems AS (
+    SELECT target_id,
+           GROUP_CONCAT(DISTINCT system_name) AS rls_list
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name LIKE 'RLS%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+first_spro_detect AS (
+    SELECT target_id,
+           MIN(id) AS spro_detect_id
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name = '$SPRO_NAME'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+)
+SELECT r.target_id AS 'ID_цели',
+       COALESCE(jr.target_type, js.target_type) AS 'Тип_цели',
+       rs.rls_list AS 'Обнаружена_РЛС',
+       jr.timestamp AS 'Время_обнаружения_РЛС',
+       js.timestamp AS 'Время_обнаружения_СПРО',
+       '$SPRO_NAME' AS 'Обнаружена_СПРО'
+FROM first_rls_detect r
+JOIN first_spro_detect s
+  ON r.target_id = s.target_id
+JOIN rls_systems rs
+  ON r.target_id = rs.target_id
+JOIN journal jr
+  ON jr.id = r.rls_detect_id
+JOIN journal js
+  ON js.id = s.spro_detect_id
+ORDER BY js.id DESC;
 "
 echo ""
 
 
 
-echo "--- 12. ---"
+echo "--- 13. Цели, обнаруженные РЛС/СПРО, обстрелянные и уничтоженные СПРО ---"
 sqlite3 -header -column "$DB_FILE" "
-select DISTINCT system_name
-from journal limit 10
-;
+WITH
+spro_destroyed AS (
+    SELECT target_id,
+           target_type,
+           MIN(id) AS destroyed_shot_id,
+           MIN(timestamp) AS destroyed_time
+    FROM shots
+    WHERE result = 'DESTROYED'
+      AND system_name = '$SPRO_NAME'
+      AND target_id IS NOT NULL
+    GROUP BY target_id, target_type
+),
+rls_detects AS (
+    SELECT target_id,
+           MIN(id) AS first_rls_detect_id,
+           GROUP_CONCAT(DISTINCT system_name) AS rls_list
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name LIKE 'RLS%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+rls_detect_details AS (
+    SELECT j.target_id,
+           j.timestamp AS first_rls_detect_time
+    FROM journal j
+    JOIN rls_detects r
+      ON j.target_id = r.target_id
+     AND j.id = r.first_rls_detect_id
+),
+spro_detects AS (
+    SELECT target_id,
+           MIN(id) AS first_spro_detect_id
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name = '$SPRO_NAME'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+spro_detect_details AS (
+    SELECT j.target_id,
+           j.timestamp AS first_spro_detect_time
+    FROM journal j
+    JOIN spro_detects s
+      ON j.target_id = s.target_id
+     AND j.id = s.first_spro_detect_id
+),
+spro_shots AS (
+    SELECT target_id,
+           MIN(id) AS first_spro_shot_id
+    FROM journal
+    WHERE event_type = 'SHOT'
+      AND system_name = '$SPRO_NAME'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+spro_shot_details AS (
+    SELECT j.target_id,
+           j.timestamp AS first_spro_shot_time
+    FROM journal j
+    JOIN spro_shots sh
+      ON j.target_id = sh.target_id
+     AND j.id = sh.first_spro_shot_id
+)
+SELECT d.target_id AS 'ID_цели',
+       d.target_type AS 'Тип',
+       CASE
+           WHEN r.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'Обнаружена_РЛС',
+       COALESCE(r.rls_list, '-') AS 'Какие_РЛС',
+       COALESCE(rd.first_rls_detect_time, '-') AS 'Время_РЛС',
+       CASE
+           WHEN s.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'Обнаружена_СПРО',
+       COALESCE(sd.first_spro_detect_time, '-') AS 'Время_СПРО',
+       CASE
+           WHEN sh.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'Был_выстрел_СПРО',
+       COALESCE(shd.first_spro_shot_time, '-') AS 'Время_выстрела',
+       d.destroyed_time AS 'Время_поражения',
+       '$SPRO_NAME' AS 'Поражена_системой'
+FROM spro_destroyed d
+LEFT JOIN rls_detects r
+  ON r.target_id = d.target_id
+LEFT JOIN rls_detect_details rd
+  ON rd.target_id = d.target_id
+LEFT JOIN spro_detects s
+  ON s.target_id = d.target_id
+LEFT JOIN spro_detect_details sd
+  ON sd.target_id = d.target_id
+LEFT JOIN spro_shots sh
+  ON sh.target_id = d.target_id
+LEFT JOIN spro_shot_details shd
+  ON shd.target_id = d.target_id
+ORDER BY d.destroyed_shot_id DESC;
 "
 echo ""
-
 
 echo "========================================="
 echo "  Конец статистики"

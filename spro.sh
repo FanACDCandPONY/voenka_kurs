@@ -4,8 +4,14 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
 check_environment
-check_single_instance "$SPRO_NAME"
-trap "cleanup '$SPRO_NAME'; exit 0" SIGTERM SIGINT EXIT
+
+INSTANCE_NAME="SPRO"
+
+check_single_instance "$INSTANCE_NAME"
+trap "cleanup '$INSTANCE_NAME'; exit 0" SIGTERM SIGINT EXIT
+
+# check_single_instance "$SPRO_NAME"
+# trap "cleanup '$SPRO_NAME'; exit 0" SIGTERM SIGINT EXIT
 
 LOGFILE="$LOG_DIR/${SPRO_NAME}.log"
 AMMO=$SPRO_AMMO
@@ -133,6 +139,13 @@ while true; do
         [[ -f "$msg_file" ]] || continue
         encrypted=$(cat "$msg_file" 2>/dev/null)
         decoded=$(decrypt_message "$encrypted")
+
+        if [[ "$decoded" == "ERROR_HMAC" || "$decoded" == "ERROR_DECRYPT" ]]; then
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "$decoded"
+        else
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "OK"
+        fi
+        
         if [[ "$decoded" == "ERROR_HMAC" ]]; then
             log_message "$LOGFILE" "$SPRO_NAME" "ПОПЫТКА НСД! Поддельное сообщение"
             send_to_kp "$SPRO_NAME" "NSD $SPRO_NAME Обнаружена попытка подмены сообщения"
@@ -161,7 +174,6 @@ while true; do
     while read -r target_id tx ty _target_mtime; do
         [[ -n "$target_id" ]] || continue
         is_target_destroyed "$target_id" && continue
-        present_now[$target_id]=1
         present_now[$target_id]=1
         last_seen_epoch[$target_id]="$now_epoch"
         last_x[$target_id]="$tx"

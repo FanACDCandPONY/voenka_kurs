@@ -20,8 +20,13 @@ eval "RLS_RANGE=\$RLS${RLS_NUM}_RANGE"
 eval "RLS_ANGLE=\$RLS${RLS_NUM}_ANGLE"
 eval "RLS_SECTOR=\$RLS${RLS_NUM}_SECTOR"
 
-check_single_instance "$RLS_NAME"
-trap "cleanup '$RLS_NAME'; exit 0" SIGTERM SIGINT EXIT
+INSTANCE_NAME="RLS${RLS_NUM}"
+
+check_single_instance "$INSTANCE_NAME"
+trap "cleanup '$INSTANCE_NAME'; exit 0" SIGTERM SIGINT EXIT
+
+# check_single_instance "$RLS_NAME"
+# trap "cleanup '$RLS_NAME'; exit 0" SIGTERM SIGINT EXIT
 
 LOGFILE="$LOG_DIR/${RLS_NAME}.log"
 RLS_STATE_DIR="$TEMP_DIR/rls_seen/${RLS_NAME}"
@@ -79,6 +84,13 @@ while true; do
         [[ -f "$msg_file" ]] || continue
         encrypted=$(cat "$msg_file" 2>/dev/null)
         decoded=$(decrypt_message "$encrypted")
+
+        if [[ "$decoded" == "ERROR_HMAC" || "$decoded" == "ERROR_DECRYPT" ]]; then
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "$decoded"
+        else
+            archive_queue_message "from_kp" "received" "$msg_file" "$decoded" "OK"
+        fi
+
         if [[ "$decoded" == "ERROR_HMAC" ]]; then
             log_message "$LOGFILE" "$RLS_NAME" "ПОПЫТКА НСД! Поддельное сообщение от КП"
             send_to_kp "$RLS_NAME" "NSD $RLS_NAME Обнаружена попытка подмены сообщения"
@@ -116,6 +128,8 @@ while true; do
 
             timestamp=$(date +"%H:%M:%S:%3N")
 
+            mark_rls_detect_report "$target_id"
+
             report_msg="В $timestamp Обнаружена цель id:$target_id с координатами $tx $ty тип:$target_type скорость:$speed"
             log_message "$LOGFILE" "$RLS_NAME" "$report_msg"
             send_to_kp "$RLS_NAME" "DETECT $target_id $tx $ty $target_type $speed"
@@ -133,7 +147,7 @@ while true; do
                 fi
             fi
 
-            mark_rls_detect_report "$target_id"
+            #mark_rls_detect_report "$target_id"
         fi
     done
 

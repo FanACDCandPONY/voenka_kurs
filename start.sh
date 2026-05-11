@@ -1,12 +1,5 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/common.sh"
-
-check_environment
-check_single_instance "GenTargets"
-trap "cleanup 'GenTargets'; exit 0" SIGTERM SIGINT EXIT
-
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/config.sh"
 
@@ -25,8 +18,10 @@ if [[ "$(uname -s)" != "Linux" ]]; then
     exit 1
 fi
 
-mkdir -p "$DB_DIR" "$LOG_DIR" "$MSG_DIR/to_kp" "$MSG_DIR/from_kp" "$MSG_DIR/heartbeat" "$TEMP_DIR" "$PID_DIR"
+mkdir -p "$DB_DIR" "$LOG_DIR" "$MSG_DIR/to_kp" "$MSG_DIR/from_kp" "$MSG_DIR/heartbeat" "$MSG_DIR/archive" "$TEMP_DIR" "$PID_DIR"
 mkdir -p /tmp/GenTargets/Targets /tmp/GenTargets/Destroy
+
+source "$SCRIPT_DIR/common.sh"
 
 init_database
 
@@ -49,17 +44,17 @@ start_component() {
             echo "[+] КП ВКО запущен"
             ;;
         rls1)
-            echo "[*] Запуск РЛС1 (Дарьял, Минск)..."
+            echo "[*] Запуск РЛС1 ..."
             bash "$SCRIPT_DIR/rls.sh" 1 &
             echo "[+] РЛС1 запущена"
             ;;
         rls2)
-            echo "[*] Запуск РЛС2 (Днепр)..."
+            echo "[*] Запуск РЛС2 ..."
             bash "$SCRIPT_DIR/rls.sh" 2 &
             echo "[+] РЛС2 запущена"
             ;;
         rls3)
-            echo "[*] Запуск РЛС3 (Воронеж-ДМ, Казань)..."
+            echo "[*] Запуск РЛС3 ..."
             bash "$SCRIPT_DIR/rls.sh" 3 &
             echo "[+] РЛС3 запущена"
             ;;
@@ -69,17 +64,17 @@ start_component() {
             echo "[+] ЗРДН1 запущен"
             ;;
         zrdn2)
-            echo "[*] Запуск ЗРДН2 (Петрозаводск)..."
+            echo "[*] Запуск ЗРДН2 ..."
             bash "$SCRIPT_DIR/zrdn.sh" 2 &
             echo "[+] ЗРДН2 запущен"
             ;;
         zrdn3)
-            echo "[*] Запуск ЗРДН3 (Уфа)..."
+            echo "[*] Запуск ЗРДН3 ..."
             bash "$SCRIPT_DIR/zrdn.sh" 3 &
             echo "[+] ЗРДН3 запущен"
             ;;
         spro)
-            echo "[*] Запуск СПРО (Новосибирск)..."
+            echo "[*] Запуск СПРО ..."
             bash "$SCRIPT_DIR/spro.sh" &
             echo "[+] СПРО запущен"
             ;;

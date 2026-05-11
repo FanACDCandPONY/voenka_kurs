@@ -4,8 +4,14 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
 check_environment
-check_single_instance "KP_VKO"
-trap "cleanup 'KP_VKO'; exit 0" SIGTERM SIGINT EXIT
+
+INSTANCE_NAME="KP"
+
+check_single_instance "$INSTANCE_NAME"
+trap "cleanup '$INSTANCE_NAME'; exit 0" SIGTERM SIGINT EXIT
+
+# check_single_instance "KP_VKO"
+# trap "cleanup 'KP_VKO'; exit 0" SIGTERM SIGINT EXIT
 
 LOGFILE="$LOG_DIR/KP_VKO.log"
 SYSTEM_LOG="$LOG_DIR/system_journal.log"
@@ -41,12 +47,17 @@ process_kp_messages() {
         decoded=$(decrypt_message "$encrypted")
 
         if [[ "$decoded" == "ERROR_HMAC" || "$decoded" == "ERROR_DECRYPT" ]]; then
+
+            archive_queue_message "to_kp" "received" "$msg_file" "$decoded" "$decoded"
+
             log_message "$LOGFILE" "KP_VKO" "ПОПЫТКА НСД! Подменённое сообщение в файле $(basename "$msg_file")"
             log_message "$SYSTEM_LOG" "KP_VKO" "ПОПЫТКА НСД! Подменённое сообщение"
             db_insert "INSERT INTO nsd_log (timestamp, system_name, details) VALUES ('$(date +"%d.%m %H:%M:%S:%3N")', 'KP_VKO', 'Подменённое сообщение: $(basename "$msg_file")');"
             rm -f "$msg_file"
             continue
         fi
+
+        archive_queue_message "to_kp" "received" "$msg_file" "$decoded" "OK"
 
         sender=$(basename "$msg_file" | cut -d'_' -f1-2)
         if [[ "$sender" != *"_"* ]]; then
@@ -62,8 +73,26 @@ process_kp_messages() {
                 status=$(echo "$decoded" | awk '{print $3}')
                 ammo_info=$(echo "$decoded" | grep -o 'AMMO:[0-9]*' || true)
 
-                if [[ "${system_status[$sys_name]}" != "$status" ]]; then
+                previous_status="${system_status[$sys_name]}"
+                status_key="${sys_name}_status"
+
+                if [[ "$previous_status" != "$status" ]]; then
                     system_status[$sys_name]="$status"
+
+                    if [[ "$previous_status" == "OFFLINE" && "$status" == "ONLINE" ]]; then
+                        log_msg="$sys_name работоспособность восстановлена"
+                        log_message "$LOGFILE" "KP_VKO" "$log_msg"
+                        log_message "$SYSTEM_LOG" "$sys_name" "работоспособность восстановлена"
+                        echo "[КП] $log_msg"
+
+                        db_insert "INSERT INTO journal (timestamp, system_name, event_type, message) VALUES ('$timestamp', '$sys_name', 'HEARTBEAT', '$log_msg');"
+                        db_insert "INSERT INTO system_status (timestamp, system_name, status, ammo_left) VALUES ('$timestamp', '$sys_name', 'ONLINE', $(echo "$ammo_info" | grep -o '[0-9]*' || echo 'NULL'));"
+
+                        missed_heartbeats[$sys_name]=0
+                        last_heartbeat[$sys_name]=$(date +%s)
+                        reported_status[$status_key]="ONLINE"
+                    fi
+
                     log_msg="$sys_name статус: $status $ammo_info"
                     log_message "$LOGFILE" "KP_VKO" "$log_msg"
                     log_message "$SYSTEM_LOG" "$sys_name" "статус: $status $ammo_info"
