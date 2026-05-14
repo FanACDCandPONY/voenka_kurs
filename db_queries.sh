@@ -345,6 +345,182 @@ ORDER BY d.destroyed_shot_id DESC;
 "
 echo ""
 
+echo "--- 14. Цели, обнаруженные РЛС до ЗРДН, обнаруженные, обстрелянные и уничтоженные ЗРДН ---"
+sqlite3 -header -column "$DB_FILE" "
+WITH
+zrdn_destroyed AS (
+    SELECT target_id,
+           target_type,
+           system_name AS destroy_system,
+           MIN(id) AS destroyed_shot_id,
+           MIN(timestamp) AS destroyed_time
+    FROM shots
+    WHERE result = 'DESTROYED'
+      AND system_name LIKE 'ZRDN%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id, target_type, system_name
+),
+zrdn_destroyed_journal AS (
+    SELECT target_id,
+           system_name AS destroy_system,
+           MIN(id) AS destroyed_journal_id,
+           MIN(timestamp) AS destroyed_journal_time
+    FROM journal
+    WHERE event_type = 'DESTROYED'
+      AND system_name LIKE 'ZRDN%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id, system_name
+),
+zrdn_detects AS (
+    SELECT target_id,
+           MIN(id) AS first_zrdn_detect_id,
+           GROUP_CONCAT(DISTINCT system_name) AS zrdn_detect_list
+    FROM journal
+    WHERE event_type = 'DETECT'
+      AND system_name LIKE 'ZRDN%'
+      AND target_id IS NOT NULL
+    GROUP BY target_id
+),
+zrdn_detect_details AS (
+    SELECT j.target_id,
+           j.timestamp AS first_zrdn_detect_time,
+           j.system_name AS first_zrdn_detect_system,
+           j.target_type AS detect_type
+    FROM journal j
+    JOIN zrdn_detects d
+      ON j.target_id = d.target_id
+     AND j.id = d.first_zrdn_detect_id
+),
+zrdn_shots AS (
+    SELECT j.target_id,
+           j.system_name,
+           MIN(j.id) AS first_zrdn_shot_id
+    FROM journal j
+    JOIN zrdn_destroyed d
+      ON d.target_id = j.target_id
+     AND d.destroy_system = j.system_name
+    LEFT JOIN zrdn_destroyed_journal dj
+      ON dj.target_id = d.target_id
+     AND dj.destroy_system = d.destroy_system
+    WHERE j.event_type = 'SHOT'
+      AND j.system_name LIKE 'ZRDN%'
+      AND j.target_id IS NOT NULL
+      AND (
+          dj.destroyed_journal_id IS NULL
+          OR j.id < dj.destroyed_journal_id
+      )
+    GROUP BY j.target_id, j.system_name
+),
+zrdn_shot_details AS (
+    SELECT j.target_id,
+           j.system_name,
+           j.timestamp AS first_zrdn_shot_time
+    FROM journal j
+    JOIN zrdn_shots sh
+      ON j.target_id = sh.target_id
+     AND j.system_name = sh.system_name
+     AND j.id = sh.first_zrdn_shot_id
+),
+rls_before_zrdn_detect AS (
+    SELECT j.target_id,
+           MIN(j.id) AS first_rls_before_zrdn_detect_id,
+           GROUP_CONCAT(DISTINCT j.system_name) AS rls_before_zrdn_detect_list
+    FROM journal j
+    JOIN zrdn_detects zd
+      ON zd.target_id = j.target_id
+    WHERE j.event_type = 'DETECT'
+      AND j.system_name LIKE 'RLS%'
+      AND j.target_id IS NOT NULL
+      AND j.id < zd.first_zrdn_detect_id
+    GROUP BY j.target_id
+),
+rls_before_zrdn_detect_details AS (
+    SELECT j.target_id,
+           j.timestamp AS first_rls_before_zrdn_detect_time,
+           j.system_name AS first_rls_before_zrdn_detect_system,
+           j.target_type AS rls_detect_type
+    FROM journal j
+    JOIN rls_before_zrdn_detect r
+      ON j.target_id = r.target_id
+     AND j.id = r.first_rls_before_zrdn_detect_id
+),
+rls_before_zrdn_destroy AS (
+    SELECT j.target_id,
+           dj.destroy_system,
+           MIN(j.id) AS first_rls_before_zrdn_destroy_id,
+           GROUP_CONCAT(DISTINCT j.system_name) AS rls_before_zrdn_destroy_list
+    FROM journal j
+    JOIN zrdn_destroyed_journal dj
+      ON dj.target_id = j.target_id
+    WHERE j.event_type = 'DETECT'
+      AND j.system_name LIKE 'RLS%'
+      AND j.target_id IS NOT NULL
+      AND j.id < dj.destroyed_journal_id
+    GROUP BY j.target_id, dj.destroy_system
+),
+rls_before_zrdn_destroy_details AS (
+    SELECT j.target_id,
+           r.destroy_system,
+           j.timestamp AS first_rls_before_zrdn_destroy_time,
+           j.system_name AS first_rls_before_zrdn_destroy_system
+    FROM journal j
+    JOIN rls_before_zrdn_destroy r
+      ON j.target_id = r.target_id
+     AND j.id = r.first_rls_before_zrdn_destroy_id
+)
+SELECT d.target_id AS 'ID_цели',
+       COALESCE(NULLIF(d.target_type, 'UNKNOWN'), dd.detect_type, 'UNKNOWN') AS 'Тип',
+
+       CASE
+           WHEN rbd.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'РЛС_до_обнаружения_ЗРДН',
+       COALESCE(rbd.rls_before_zrdn_detect_list, '-') AS 'Какие_РЛС_до_ЗРДН',
+       COALESCE(rbdd.first_rls_before_zrdn_detect_time, '-') AS 'Время_РЛС_до_ЗРДН',
+
+
+       CASE
+           WHEN dd.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'Обнаружена_ЗРДН',
+       COALESCE(zdet.zrdn_detect_list, '-') AS 'Какие_ЗРДН_обнаружили',
+       COALESCE(dd.first_zrdn_detect_system, '-') AS 'Первый_обнаруживший_ЗРДН',
+       COALESCE(dd.first_zrdn_detect_time, '-') AS 'Время_обнаружения_ЗРДН',
+
+       CASE
+           WHEN shd.target_id IS NOT NULL THEN 'ДА'
+           ELSE 'НЕТ'
+       END AS 'Был_выстрел_ЗРДН',
+       COALESCE(shd.first_zrdn_shot_time, '-') AS 'Время_выстрела_ЗРДН',
+
+       d.destroyed_time AS 'Время_поражения',
+       d.destroy_system AS 'Поражена_системой'
+FROM zrdn_destroyed d
+LEFT JOIN zrdn_destroyed_journal dj
+  ON dj.target_id = d.target_id
+ AND dj.destroy_system = d.destroy_system
+LEFT JOIN zrdn_detects zdet
+  ON zdet.target_id = d.target_id
+LEFT JOIN zrdn_detect_details dd
+  ON dd.target_id = d.target_id
+LEFT JOIN zrdn_shot_details shd
+  ON shd.target_id = d.target_id
+ AND shd.system_name = d.destroy_system
+LEFT JOIN rls_before_zrdn_detect rbd
+  ON rbd.target_id = d.target_id
+LEFT JOIN rls_before_zrdn_detect_details rbdd
+  ON rbdd.target_id = d.target_id
+LEFT JOIN rls_before_zrdn_destroy rbdestroy
+  ON rbdestroy.target_id = d.target_id
+ AND rbdestroy.destroy_system = d.destroy_system
+LEFT JOIN rls_before_zrdn_destroy_details rbdestroyd
+  ON rbdestroyd.target_id = d.target_id
+ AND rbdestroyd.destroy_system = d.destroy_system
+ORDER BY d.destroyed_shot_id DESC;
+"
+echo ""
+
+
 echo "========================================="
 echo "  Конец статистики"
 echo "========================================="
